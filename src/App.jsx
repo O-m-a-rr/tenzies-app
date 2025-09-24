@@ -2,12 +2,12 @@ import React from "react";
 import Die from "./Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
-import { useWindowSize } from "react-use";
+// import { useWindowSize } from "react-use";
 
 export default function App() {
   const [dices, setDices] = React.useState(() => generateAllNewDices());
   const [finished, setFinished] = React.useState(false);
-  const { width, height } = useWindowSize();
+  // const { width, height } = useWindowSize();
   const newGameButtonRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -82,7 +82,7 @@ export default function App() {
 
   return (
     <main>
-      {finished && <Confetti width={width} height={height} />}
+      {finished && <Confetti />} {/*width={width} height={height} */}
       <div aria-live="polite" className="sr-only">
         {finished && (
           <p>Congratulations! You won! Press "New Game" to start again.</p>
@@ -93,7 +93,6 @@ export default function App() {
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
       </p>
-
       <div id="game-btns">{dicesBtns}</div>
       <button
         id="roll-btn"
